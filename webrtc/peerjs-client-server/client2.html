@@ -1,0 +1,37 @@
+<!doctype html>
+<head>
+    <title>peerJS client 2</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/peerjs/0.3.9/peer.min.js"></script>
+    
+
+    <script>
+        var peer = new Peer('dirk_client2'); 
+        var clientId;
+
+        peer.on('open', function(id) {
+            clientId = id;
+            console.log('My peer ID is: ' + id);
+        });
+
+        var conn = peer.connect('dirk_server1')
+
+        conn.on('open', function() {
+            // Receive messages
+            conn.on('data', function(data) {
+                console.log('Received', data);
+            });
+
+            // Send messages
+            conn.send('Hello from ' + clientId);
+        });
+
+    </script>
+
+</head>
+
+<body>
+
+    <center><h1>peerJS client 2</h1></center>
+    
+</body>
+</html>

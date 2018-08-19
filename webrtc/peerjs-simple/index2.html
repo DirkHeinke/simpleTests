@@ -1,0 +1,30 @@
+<!doctype html>
+<head>
+    <title>peerJS</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/peerjs/0.3.9/peer.min.js"></script>
+    
+
+    <script>
+        var peer = new Peer('abcdef2'); 
+
+        peer.on('open', function(id) {
+            console.log('My peer ID is: ' + id);
+        });
+        
+        peer.on('connection', function(conn) {
+            conn.on('data', function(data){
+              // Will print 'hi!'
+              console.log(data);
+            });
+          });
+
+    </script>
+
+</head>
+
+<body>
+
+    <center><h1>peerJS</h1></center>
+    
+</body>
+</html>
